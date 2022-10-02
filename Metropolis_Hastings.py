@@ -1,5 +1,7 @@
+# %%
 import random
 import matplotlib.pyplot as plt
+import os
 
 # MH法 実装
 def metropolis_hasting(__alpha, __theta, __step):
@@ -27,8 +29,17 @@ def randoms(__alpha, __beta):
 
 # 適当にプロット
 if __name__ == '__main__':
+    # フォルダ名
+    path1 = 'figs'
+    # 保存画像名
+    path2 = 'mhplot'
     # 初期サンプル、提案幅、試行回数
     rnd = metropolis_hasting(1.0, 1.0, 200)
     plt.title('Metropolis Hastings')
     plt.xlim(0,200)
     plt.plot(rnd)
+    if not os.path.exists(path1):
+        os.mkdir(path1)
+    path3 = os.path.join(path1, path2)
+    plt.savefig(path3 + '.png')
+# %%
